@@ -1,28 +1,41 @@
-import { useState } from 'react'
+import React from 'react';
+import Hero from './components/Hero';
+import StallMap from './components/StallMap';
+import TenantManager from './components/TenantManager';
+import TicketingPayments from './components/TicketingPayments';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
+    <div className="min-h-screen bg-gray-950 text-gray-900">
+      <Hero />
+
+      <main className="relative -mt-10 space-y-12 rounded-t-3xl bg-white pb-20 pt-10">
+        <div className="mx-auto max-w-6xl px-6">
+          <SectionHeader
+            title="Operations Dashboard"
+            subtitle="Everything you need to run your market — organized and efficient"
+          />
         </div>
-      </div>
+
+        <StallMap />
+        <TenantManager />
+        <TicketingPayments />
+
+        <footer className="mx-auto max-w-6xl px-6 text-center text-sm text-gray-500">
+          Built for modern markets • Demo mode (no backend connected yet)
+        </footer>
+      </main>
     </div>
-  )
+  );
 }
 
-export default App
+function SectionHeader({ title, subtitle }) {
+  return (
+    <div className="flex flex-col items-start gap-2">
+      <h2 className="text-2xl font-semibold text-gray-900">{title}</h2>
+      <p className="text-sm text-gray-600">{subtitle}</p>
+    </div>
+  );
+}
+
+export default App;
